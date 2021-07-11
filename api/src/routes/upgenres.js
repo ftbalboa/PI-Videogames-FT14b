@@ -1,22 +1,27 @@
-const { Genre, conn } = require('../db.js');
+const { Genre } = require('../db.js');
+const { apiReq } = require("./lib.js");
 const { Router } = require("express");
 const router = Router();
 
 router.get("/", function (req, res) {
-    Genre.findAll().then((i)=>{res.send(i);})
-});
+    apiReq("genres", gRes)
+      res.send('ok');}
+    );
 
 const gRes = (body) => {
-  let forReturn = [];
+  let gnr = [];
   body.results.forEach((e) => {
     let a = {
       id: e.id,
       name: e.name,
       img: e.image_background,
     };
-    forReturn.push(a);
+    gnr.push(a);
   });
-  console.log(forReturn);
+  Genre.sync({ force: true }).then(()=>{
+    gnr.forEach((g)=>{Genre.create(g);});
+});
 };
 
 module.exports = router;
+

@@ -3,6 +3,7 @@ const { Router } = require("express");
 const videogame = require("./videogame.js");
 const videogames = require("./videogames.js");
 const genres = require("./genres.js");
+const upgenres = require("./upgenres.js");
 
 const router = Router();
 
@@ -10,6 +11,7 @@ const router = Router();
 router.use("/videogame", videogame);
 router.use("/videogames", videogames);
 router.use("/genres", genres);
+router.use("/upgenres", upgenres);
 
 router.get("/", function (req, res, next) {
   console.log("hi desde el index");

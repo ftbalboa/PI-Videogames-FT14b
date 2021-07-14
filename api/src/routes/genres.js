@@ -1,4 +1,4 @@
-const { Genre, conn } = require('../db.js');
+const { Genre} = require('../db.js');
 const { Router } = require("express");
 const router = Router();
 

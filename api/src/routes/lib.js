@@ -1,7 +1,7 @@
 require('dotenv').config();
 const request = require("request");
 const url = "https://api.rawg.io/api/";
-const { API_KEY, DB_USER } = process.env;
+const { API_KEY } = process.env;
 
 // for requests, need path and id or params
 const apiReq = (path, cb, id = null, params = {}) => {

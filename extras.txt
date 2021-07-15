@@ -1,0 +1,5 @@
+- mejorar update de datos, al iniciar llamar a la api con los géneros
+y si no hay error actualizar
+- imagen genérica si no se provee imagen
+- informar de plataformas permitidas a la hora de agregar un game
+- ver que onda los strings como ID

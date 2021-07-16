@@ -1,0 +1,33 @@
+.Nav{
+    background-color: black;
+    height: 6vh;
+    padding-top: 0.75em;
+    color: Deeppink;
+    padding-left: 0.5em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    border: 1px solid Deeppink;
+}
+
+.active{
+    color: Deeppink;
+    text-decoration: underline red;
+}
+
+.navTitle{
+    font-size: 1.2em;
+    color:Deeppink;
+    text-decoration: none;
+    margin:1em;
+    padding-bottom: 0.5em;
+}
+
+.navItem{
+    color:Deeppink;
+    margin-left: auto;
+    padding-right: 5em;
+    font-size: 0.9em;
+    text-decoration: none;
+    padding-bottom: 0.5em;
+}

@@ -1,14 +1,28 @@
-import { SET_TURN, TEST } from "../constants";
+import {
+  SET_GENRES,
+  SET_GAMES_ACT,
+  SET_GAME_DETAIL,
+  SET_GAME_LIST,
+  TEST,
+} from "../constants";
 
 const initialState = {
-  turn: "white",
+  gameList: [],
+  gamesAct: [],
+  gameDetail: {},
+  genres: [],
 };
 
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case SET_TURN:
-      return { ...state, turn: action.payload };
-
+    case SET_GENRES:
+      return { ...state, genres: action.payload };
+    case SET_GAME_LIST:
+      return { ...state, gameList: action.payload };
+    case SET_GAMES_ACT:
+      return { ...state, gamesAct: action.payload };
+    case SET_GAME_DETAIL:
+      return { ...state, gameDetail: action.payload };
     case TEST:
       console.log("from redux test:");
       console.log(action.payload);

@@ -3,7 +3,7 @@ import { mainReducer } from '../reducer';
 
 export const store = configureStore({
   reducer: {
-    chess: mainReducer,
+    vg: mainReducer,
     devTools: true,
   },
 });

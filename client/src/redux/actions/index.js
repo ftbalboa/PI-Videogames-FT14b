@@ -1,9 +1,30 @@
-import { SET_TURN } from "../constants";
+import { SET_GAMES_ACT, SET_GAME_DETAIL, SET_GAME_LIST, SET_GENRES, TEST } from "../constants";
 
-export function setTurn(status) {
+export function setGenres(payload) {
   return {
-    type: SET_TURN,
-    payload: status,
+    type: SET_GENRES,
+    payload: payload,
+  };
+}
+
+export function setGameList(payload) {
+  return {
+    type: SET_GAME_LIST,
+    payload: payload,
+  };
+}
+
+export function setGamesAct(payload) {
+  return {
+    type: SET_GAMES_ACT,
+    payload: payload,
+  };
+}
+
+export function setGameDetail(payload) {
+  return {
+    type: SET_GAME_DETAIL,
+    payload: payload,
   };
 }
 

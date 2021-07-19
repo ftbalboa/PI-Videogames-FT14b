@@ -9,19 +9,28 @@ export function Landing() {
     loadData();
   }, []);
 
-  let style = {
-    width: "100vw",
-    height: "100vh",
-    backgroundImage: `linear-gradient(black, black),url(${backImg})`,
-    backgroundBlendMode: "saturation",
-    color: "white",
-    backgroundRepeat: "no-repeat",
-    backgroundSize: "100% 100%",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-  };
+  let style = `
+    .landing{
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;}
+    .landing::before{
+      content: "";
+      background-image: url(${backImg});
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      filter: brightness(20%);
+    }
+  `;
 
   const loadData = () => {
     axios({
@@ -35,7 +44,8 @@ export function Landing() {
   };
 
   return (
-    <div className="landing" style={style}>
+    <div className="landing">
+    <style>{style}</style>
       <span className="lanTitle">Henry PI-Videogames</span>
       <Link to="/home">
         <button className="lanButton">Ingresar</button>

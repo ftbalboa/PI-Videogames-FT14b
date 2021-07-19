@@ -4,6 +4,7 @@ import {
   SET_GAME_DETAIL,
   SET_GAME_LIST,
   TEST,
+  SET_PLATFORMS,
 } from "../constants";
 
 const initialState = {
@@ -11,12 +12,15 @@ const initialState = {
   gamesAct: [],
   gameDetail: {},
   genres: [],
+  platforms: [],
 };
 
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_GENRES:
       return { ...state, genres: action.payload };
+    case SET_PLATFORMS:
+      return { ...state, platforms: action.payload };
     case SET_GAME_LIST:
       return { ...state, gameList: action.payload };
     case SET_GAMES_ACT:

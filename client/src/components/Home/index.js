@@ -4,9 +4,12 @@ import { setGameList, setGamesAct, setGenres } from "../../redux/actions";
 import { GameCard } from "../GameCard/GameCard";
 import styles from "./Home.css";
 const axios = require("axios");
+const gamesPerPage = 15;
 
 export function Home() {
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [page, setPage] = useState(1);
   const [genresAct, setGenresAct] = useState([]);
   const [aocAct, setAocAct] = useState({ api: true, custom: true });
   const dispatch = useDispatch();
@@ -22,27 +25,34 @@ export function Home() {
   }, []);
 
   const loadData = () => {
-    axios({
-      method: "get",
-      url: "http://localhost:3001/videogames",
-    }).then(function (response) {
-      dispatch(setGameList(response.data));
-      dispatch(setGamesAct(response.data));
-    });
-    axios({
-      method: "get",
-      url: "http://localhost:3001/genres",
-    }).then(function (response) {
-      dispatch(setGenres(response.data));
-    });
+    if (gameList.length < 1) {
+      setLoading(true);
+      axios({
+        method: "get",
+        url: "http://localhost:3001/videogames",
+      }).then(function (response) {
+        dispatch(setGameList(response.data));
+        dispatch(setGamesAct(response.data));
+        setLoading(false);
+      });
+    }
+    genres.length < 1 &&
+      axios({
+        method: "get",
+        url: "http://localhost:3001/genres",
+      }).then(function (response) {
+        dispatch(setGenres(response.data));
+      });
   };
 
   const apiSearch = () => {
+    setLoading(true);
     axios({
       method: "get",
       url: `http://localhost:3001/videogames?name=${search}`,
     }).then(function (response) {
       dispatch(setGamesAct(response.data));
+      setLoading(false);
     });
   };
 
@@ -57,10 +67,15 @@ export function Home() {
     }
   };
 
+
+  const handleOrder = () => {}
+
+  const handleFilter = () => {}
+
   const handleAoc = (aocType) => {
-    let obj = {...aocAct};
-    obj[aocType] = !obj[aocType]
-    setAocAct({...obj});
+    let obj = { ...aocAct };
+    obj[aocType] = !obj[aocType];
+    setAocAct({ ...obj });
   };
 
   return (
@@ -119,25 +134,52 @@ export function Home() {
             Custom games
           </label>
         </div>
+        <button className="filterButton" onClick={handleFilter}>Filter</button>
       </div>
+      <hr/>
       <div className="order">
         {/*alfb or rank*/}
         {/*asc or desc*/}
+        <button className="orderButton" onClick={handleOrder}>Order</button>
       </div>
+      {loading ? "Loading" : ""}
+
       <div className="gameCards">
-        {gamesAct.map((g) => (
-          <GameCard key={g.id} game={g} />
-        ))}
+        {gamesAct.map((g, index) => {
+          if (index >= gamesPerPage * (page - 1) && index < gamesPerPage * page)
+            return <GameCard key={g.id} game={g} />;
+        })}
       </div>
-      <div className="page"></div>
+
+      <div className="page">
+        {page > 1 ? (
+          <span
+            className="arrow"
+            onClick={() => {
+              setPage(page - 1);
+            }}
+          >
+            {" "}
+            {"<"}{" "}
+          </span>
+        ) : (
+          ""
+        )}
+        {page}
+        {page < gamesAct.length / gamesPerPage ? (
+          <span
+            className="arrow"
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            {" "}
+            {">"}{" "}
+          </span>
+        ) : (
+          ""
+        )}
+      </div>
     </div>
   );
 }
-
-//input de busqueda + boton
-
-//filtros
-
-// listado de juegos
-
-// paginado

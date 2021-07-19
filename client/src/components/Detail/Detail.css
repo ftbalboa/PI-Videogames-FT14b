@@ -1,0 +1,56 @@
+.Detail{
+    color: white;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px; 
+    padding-bottom: 2vh;
+}
+
+.detailGame{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 2%;
+    border: 2px solid deeppink;
+    width: 80vw;
+    background-color: rgb(32,32,32);
+    padding: 10px;
+}
+
+.detailRating{
+    color:deeppink;
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.detailImg{
+    width: 50%;
+    height: 50%;
+}
+
+.detailCon{
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 10px;
+}
+
+.detailTitleContainer{
+    display:flex;
+    align-items: center;
+}
+
+.detailSubTitle{
+    font-size: 25px;
+    text-align: center;
+    color:deeppink;
+    margin-bottom: 20px;
+}
+
+.detailTitDesc{
+    font-size: 25px;
+    color:deeppink;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

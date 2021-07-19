@@ -1,9 +1,9 @@
 .Nav{
     background-color: black;
     height: 6vh;
+    width: 98vw;
     padding-top: 0.75em;
     color: Deeppink;
-    padding-left: 0.5em;
     text-decoration: none;
     display: flex;
     align-items: center;

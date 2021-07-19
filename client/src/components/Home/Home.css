@@ -1,0 +1,8 @@
+.gameCards{
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.Home{
+    color:white;
+}

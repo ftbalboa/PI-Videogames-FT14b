@@ -6,7 +6,7 @@ const { API_KEY } = process.env;
 // for requests, need path and id or params
 const apiReq = (path, cb, id = null, params = {}) => {
   id = id ? `/${id}` : "";
-  paramStr = "";
+  let paramStr = "";
   Object.keys(params).forEach((key) => {
     paramStr = paramStr.concat(`&${key}=${params[key]}`);
   });
@@ -26,4 +26,21 @@ const apiReq = (path, cb, id = null, params = {}) => {
   });
 };
 
-module.exports = { apiReq };
+const simpleReq = (path, cb) => {
+  let requestOptions = {
+    url: path,
+    method: "GET",
+    json: {},
+  };
+  request(requestOptions, (err, response, body) => {
+    if (err) {
+      console.log(err);
+    } else if (response.statusCode === 200) {
+      cb(body);
+    } else {
+      console.log(response.statusCode);
+    }
+  });
+}
+
+module.exports = { apiReq, simpleReq };

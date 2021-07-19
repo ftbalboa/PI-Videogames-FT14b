@@ -12,8 +12,5 @@ export function Nav() {
       <NavLink to="/home/create" className="navItem" activeClassName="active">
         Add game
       </NavLink>
-      <NavLink to="/about" className="navItem" activeClassName="active">
-        About
-      </NavLink>
     </div>
   );}

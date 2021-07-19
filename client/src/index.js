@@ -19,7 +19,7 @@ ReactDOM.render(
         <Route exact path="/" component={Landing} />
         <Route path="/home/" component={Nav} />
         <Route exact path="/home" component={Home} />
-        <Route exact path="/detail" component={Detail} />
+        <Route exact path="/home/detail/:gameId" render={({match}) => <Detail gameId={match.params.gameId}/>} />
         <Route exact path="/home/create" component={Create} />
       </Router>
     </Provider>

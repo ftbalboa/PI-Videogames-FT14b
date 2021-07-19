@@ -14,6 +14,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    genres:{
+      type: DataTypes.ARRAY(DataTypes.TEXT)
+    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,
@@ -28,6 +31,9 @@ module.exports = (sequelize) => {
       type: DataTypes.ARRAY(DataTypes.TEXT),
       allowNull: false,
     },
+    img:{
+      type: DataTypes.TEXT,
+    }
   },{
     tableName: 'Videogames'
   });

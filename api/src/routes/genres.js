@@ -2,6 +2,8 @@ const { Genre} = require('../db.js');
 const { Router } = require("express");
 const router = Router();
 
+
+
 router.get("/", function (req, res) {
     Genre.findAll().then((i)=>{res.send(i);})
 });
@@ -16,7 +18,6 @@ const gRes = (body) => {
     };
     forReturn.push(a);
   });
-  console.log(forReturn);
 };
 
 module.exports = router;

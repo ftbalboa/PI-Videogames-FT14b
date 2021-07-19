@@ -3,21 +3,23 @@ const router = Router();
 const { apiReq } = require("./lib.js");
 const { Videogame } = require('../db.js');
 
+let actId = 0;
 
-router.post("/posts", function (req, res) {
+Videogame.findAll().then(
+  (i)=>{i.forEach( (e) => {
+    let id = e.dataValues.id;
+    id = id.replace("B", "");
+    id = Number(id);
+    if (id >= actId) {actId = id + 1;}
+  });})
+
+router.post("/", function (req, res) {
   let rB = req.body;
-  const base = {
-    id: "0",
-    name: "",
-    description: "",
-    released:"",
-    rating:"",
-    platforms:[],
+  const game = {
+    ...rB,
+    id: `B${actId}`,
   };
-  let game = { ...base };
-  for (key of Object.keys(base)) {
-    if (rB.hasOwnProperty(key)) game[key] = rB[key];
-  }
+  actId++;
   Videogame.sync().then(()=>{
     Videogame.create(game);
     res.status(200).json(game);
@@ -39,7 +41,12 @@ router.get("/:idVideogame", function (req, res) {
       };
       res.send(forSend);
     };
-    apiReq("games", cb, req.params.idVideogame);
+    if(req.params.idVideogame.includes("B")){
+      Videogame.findOne({ where: {id: req.params.idVideogame} }).then(function(one) {
+        res.send(one);
+      })
+    }
+    else{apiReq("games", cb, req.params.idVideogame);}
 });
 
 module.exports = router;

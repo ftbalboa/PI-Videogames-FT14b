@@ -1,4 +1,4 @@
-import { SET_GAMES_ACT, SET_GAME_DETAIL, SET_GAME_LIST, SET_GENRES, TEST } from "../constants";
+import { SET_GAMES_ACT, SET_GAME_DETAIL, SET_GAME_LIST, SET_GENRES, SET_PLATFORMS, TEST } from "../constants";
 
 export function setGenres(payload) {
   return {
@@ -6,6 +6,14 @@ export function setGenres(payload) {
     payload: payload,
   };
 }
+
+export function setPlatforms(payload) {
+  return {
+    type: SET_PLATFORMS,
+    payload: payload,
+  };
+}
+
 
 export function setGameList(payload) {
   return {

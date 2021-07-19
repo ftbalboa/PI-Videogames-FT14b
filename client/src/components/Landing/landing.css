@@ -1,11 +1,12 @@
 .lanTitle{
-    opacity: 1;
+    position: relative;
     font-size: 10vh;
-    margin-top: -10vh ;
-    margin-bottom: 50vh ;
+    margin-top: -20vh ;
+    margin-bottom: 55vh ;
     color:Deeppink;
 }
 .lanButton{
+    position: relative;
     color: Deeppink;
     background-color: transparent;
     width: 10vw;

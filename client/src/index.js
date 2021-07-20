@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import {Landing} from "./components/Landing";
 import { Nav } from "./components/Nav/Nav";
 import { store } from "./redux/store";

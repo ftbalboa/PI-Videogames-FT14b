@@ -2,7 +2,7 @@ const { Router } = require("express");
 const router = Router();
 const { apiReq, simpleReq } = require("./lib.js");
 const apiCalls = 3;
-const { Videogame } = require("../db.js");
+const { Videogame, Genre } = require("../db.js");
 
 router.get("/", function (req, res) {
   let finalSend = [];
@@ -19,12 +19,13 @@ router.get("/", function (req, res) {
     }));
     finalSend = [...finalSend, ...forSend];
     if (actCalls === apiCalls) {
-      Videogame.findAll().then((i) => {
+      Videogame.findAll({include:Genre}).then((i) => {
+        i = i.map((v) => ({...v.dataValues, genres: v.dataValues.Genres.map((g)=>(g.name))}));
         let forSend = [];
         if (req.query.name) {
-          forSend = i.filter((v)=>v.dataValues.name.includes(req.query.name));
+          forSend = i.filter((v)=>v.name.includes(req.query.name));
         } else {
-          forSend = i.map((v) => v.dataValues);
+          forSend = i;
         }
         finalSend = [...finalSend, ...forSend];
         res.send(finalSend);

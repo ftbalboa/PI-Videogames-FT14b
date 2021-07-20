@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import styles from "./Detail.css";
 const axios = require("axios");
 
 export function Detail({ gameId }) {
   let [loading, setLoading] = useState(true);
-  let [backImg, changeBackImg] = useState("");
   let [gameData, setGameData] = useState({});
-  useEffect(() => {
-    loadData();
-  }, []);
   const loadData = () => {
     axios({
       method: "get",
@@ -19,6 +14,10 @@ export function Detail({ gameId }) {
       setGameData(response.data);
     });
   };
+  useEffect(() => {
+    loadData();
+  }, []);
+
 
   const printGame = () => {
     if (gameData.id) {

@@ -40,24 +40,29 @@ sequelize.models = Object.fromEntries(capsEntries);
 const { Videogame, Genre } = sequelize.models;
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-const vgGenres = sequelize.define("vgGenres", {
-  vgId: {
-    type: DataTypes.STRING,
-    references: {
-      model: Videogame,
-      key: "id",
-    },
-  },
-  genreId: {
-    type: DataTypes.STRING,
-    references: {
-      model: Genre,
-      key: "id",
-    },
-  },
-});
-Videogame.belongsToMany(Genre, { through: vgGenres });
-Genre.belongsToMany(Videogame, { through: vgGenres });
+// const vgGenres = sequelize.define("vgGenres", {
+//   vgId: {
+//     type: DataTypes.STRING,
+//     references: {
+//       model: Videogame,
+//       key: "id",
+//     },
+//   },
+//   genreId: {
+//     type: DataTypes.STRING,
+//     references: {
+//       model: Genre,
+//       key: "id",
+//     },
+//   },
+// });
+
+
+Videogame.belongsToMany(Genre, { through: 'vgGen' });
+Genre.belongsToMany(Videogame, { through: 'vgGen' });
+
+//new
+
 
 sequelize.sync();
 

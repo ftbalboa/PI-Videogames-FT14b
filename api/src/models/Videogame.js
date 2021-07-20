@@ -14,9 +14,6 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    genres:{
-      type: DataTypes.ARRAY(DataTypes.TEXT)
-    },
     description: {
       type: DataTypes.TEXT,
       allowNull: false,

@@ -1,7 +1,7 @@
 const {Router} = require("express");
 const router = Router();
 const { apiReq } = require("./lib.js");
-const { Videogame } = require('../db.js');
+const { Videogame, Genre } = require('../db.js');
 
 let actId = 0;
 
@@ -21,7 +21,9 @@ router.post("/", function (req, res) {
   };
   actId++;
   Videogame.sync().then(()=>{
-    Videogame.create(game);
+    Videogame.create(game).then(
+      (v)=>{v.setGenres(game.genres)}
+    );
     res.status(200).json(game);
 });
 });
@@ -42,8 +44,9 @@ router.get("/:idVideogame", function (req, res) {
       res.send(forSend);
     };
     if(req.params.idVideogame.includes("B")){
-      Videogame.findOne({ where: {id: req.params.idVideogame} }).then(function(one) {
-        res.send(one);
+      Videogame.findOne({ where: {id: req.params.idVideogame},include:Genre }).then(function(one) {
+        let forSend = {...one.dataValues, genres: one.dataValues.Genres.map((g)=>(g.name))};
+        res.send(forSend);
       })
     }
     else{apiReq("games", cb, req.params.idVideogame);}

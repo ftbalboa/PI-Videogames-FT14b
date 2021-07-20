@@ -45,9 +45,6 @@ export function Create() {
       setPlatformsAct([...arr]);
     }
   };
-  useEffect(() => {
-    loadData();
-  }, []);
   const loadData = () => {
     platforms.length < 1 && axios({
       method: "get",
@@ -62,6 +59,10 @@ export function Create() {
       dispatch(setGenres(response.data));
     });
   };
+  useEffect(() => {
+    loadData();
+  }, []);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();

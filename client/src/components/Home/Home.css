@@ -1,8 +1,49 @@
 .gameCards{
     display:flex;
+    width: 100%;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .Home{
     color:white;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.searchBar{
+    display:flex;
+    width: 30vw;
+    min-width: 350px;
+    justify-content: space-between;
+}
+
+.searchInput{
+    background-color: transparent;
+    border-radius: 5%;
+    border: 1px solid deeppink;
+    color: white;
+    height: 20px;
+}
+
+.searchInput:focus{
+    outline: none;
+}
+
+.page{
+    color: deeppink;
+    font-size: 20px;
+    margin-bottom: 10px;
+    display: flex;
+    width: 15%;
+    justify-content: space-around;
+}
+
+.arrow{
+    width: 20px;
+    cursor: pointer;
+    user-select: none;
 }

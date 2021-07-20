@@ -3,4 +3,69 @@
     flex-direction: column;
     align-items: center;
     color:white;
+    margin-bottom: 20px;
+}
+
+.createTitle{
+    color: deeppink;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.createSubTitle{
+    font-size: 20px; 
+}
+
+.cbCreate{
+    width: 80%;
+    margin: 10px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: space-around;
+}
+
+.defForm{
+    margin: 10px;
+    display:flex;
+    width: 300px;
+}
+
+.textInput{
+    background-color: transparent;
+    border-radius: 5%;
+    border: 1px solid deeppink;
+    color: white;
+    height: 20px;
+}
+
+.textAreaInput{
+    background-color: transparent;
+    border-radius: 5%;
+    border: 1px solid deeppink;
+    color: white;
+    height: 40px;
+}
+
+.textAreaInput:focus{
+    outline: none;
+}
+
+.textInput:focus{
+    outline: none;
+}
+
+.submitButton{
+    cursor: pointer;
+    background-color: transparent;
+    color: deeppink;
+    border: 1px solid deeppink;
+    border-radius: 5%;
+    margin: 5px;
+    height: 30px;
+    width: 150px;
 }

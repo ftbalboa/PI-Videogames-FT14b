@@ -14,6 +14,7 @@ router.get("/", function (req, res) {
       id: g.id,
       name: g.name,
       img: g.background_image,
+      rating: g.rating,
       genres: g.genres.map((g) => g.name),
     }));
     finalSend = [...finalSend, ...forSend];

@@ -16,3 +16,27 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+hr{
+  color:deeppink;
+  width: 90%;
+}
+
+label{
+  min-width: 100px;
+}
+
+.genericButton{
+  background-color: transparent;
+  color: deeppink;
+  border-radius: 5%;
+  border: 1px solid deeppink;
+  min-width: 60px;
+  padding-bottom: 4px;
+  cursor: pointer;
+}
+
+.pink{
+  color:deeppink;
+  font-size: 20px;
+}

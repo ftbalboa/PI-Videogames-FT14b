@@ -1,0 +1,20 @@
+.order{
+    display:flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: center;
+    color: deeppink;
+    font-size: 20px
+}
+
+.opt{
+    margin: 10px;
+    color: white;
+    font-size: 15px
+}
+
+.ascOrDesc{
+    margin: 10px;
+    color: white;
+    font-size: 15px
+}

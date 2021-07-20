@@ -9,7 +9,6 @@ export function Create() {
   const platforms = useSelector((state) => state.vg.platforms);
   const dispatch = useDispatch();
   const [genresAct, setGenresAct] = useState([]);
-  const [pError, setPerror] = useState(false);
   const [platformsAct, setPlatformsAct] = useState([]);
   const [input, setInput] = useState({
     name: "",
@@ -66,9 +65,10 @@ export function Create() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (platformsAct.length < 1) setPerror(true);
+    if (platformsAct.length < 1){
+      alert("Select at least one platform")
+    }
     else {
-      setPerror(false);
       sendGame();
     }
   };
@@ -83,14 +83,27 @@ export function Create() {
     if(input.rating.length !== 0){payload['rating'] = input.rating}
     if(input.released.length !== 0){payload['released'] = input.released}
     if(input.img.length !== 0){payload['img'] = input.img}
-    axios.post("http://localhost:3001/videogame", payload);
+    axios.post("http://localhost:3001/videogame", payload).then(
+      ()=>{
+        alert("Success");
+        setInput({
+          name: "",
+          description: "",
+          released: "",
+          rating: "",
+          genres: genresAct,
+          platforms: platformsAct,
+          img: "",
+        });
+    }
+    );
   };
 
   return (
     <div className="Create">
-      Add game to database
+      <span className="createTitle">Add game to database</span>
       <form className="form" onSubmit={handleSubmit}>
-        <div className="name">
+        <div className="defForm">
           <label>Name*:</label>
           <input
             required="required"
@@ -98,11 +111,12 @@ export function Create() {
             name="name"
             value={input.name}
             onChange={handleInputChange}
+            className="textInput"
           />
         </div>
         <hr />
-        <div className="genres">
-          Genres:
+        <span className="createSubTitle">Genres</span>
+        <div className="cbCreate">
           {genres.map((g) => (
             <label key={g.id}>
               <input
@@ -113,13 +127,13 @@ export function Create() {
                 }}
               />{" "}
               {g.name}
+              <span className="pink"> || </span>
             </label>
           ))}
         </div>
         <hr />
-        <div className="platforms">
-          {pError ? "select at least one platform" : ""}
-          Platforms:
+        <span className="createSubTitle">Platforms</span>
+        <div className="cbCreate">
           {platforms.map((p, index) => (
             <label key={index}>
               <input
@@ -130,21 +144,23 @@ export function Create() {
                 }}
               />{" "}
               {p.name}
+              <span className="pink"> || </span>
             </label>
           ))}
         </div>
         <hr />
-        <div className="description*">
+        <div className="defForm">
           <label>Description*:</label>
           <textarea
             type="text"
             name="description"
             required="required"
             value={input.description}
+            className="textAreaInput"
             onChange={handleInputChange}
           />
         </div>
-        <div className="rating">
+        <div className="defForm">
           <label>Rating:</label>
           <input
             type="number"
@@ -152,29 +168,32 @@ export function Create() {
             min="0"
             max="5"
             step="0.01"
+            className="textInput"
             value={input.rating}
             onChange={handleInputChange}
           />
         </div>
-        <div className="img">
+        <div className="defForm">
           <label>Image url:</label>
           <input
             type="text"
             name="img"
             value={input.img}
+            className="textInput"
             onChange={handleInputChange}
           />
         </div>
-        <div className="released">
+        <div className="defForm">
           <label>Released:</label>
           <input
             type="date"
             name="released"
             value={input.released}
+            className="textInput"
             onChange={handleInputChange}
           />
         </div>
-        <input type="submit" name="submit" className="Button" />
+        <input type="submit" name="submit" className="submitButton" value="Add to database"/>
       </form>
     </div>
   );

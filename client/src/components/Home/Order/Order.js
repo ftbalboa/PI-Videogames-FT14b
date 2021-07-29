@@ -44,7 +44,7 @@ export function Order() {
       );
     }
     if (optAct.rating) {
-      arr.sort((a, b) => b.rating - a.rating);
+      arr.sort((a, b) => new Date(b.released) - new Date(a.released));
     }
     if(aodAct.asc){arr = arr.reverse();}
     dispatch(setGamesAct([...arr]));

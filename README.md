@@ -8,6 +8,10 @@
   <img height="200" src="./videogame.png" />
 </p>
 
+### Video de ejemplo:
+
+![ejemplo](/gif/ej4.gif)
+
 ## Objetivos del Proyecto
 
 - Construir una App utlizando React, Redux, Node y Sequelize.

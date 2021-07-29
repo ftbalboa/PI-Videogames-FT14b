@@ -16,6 +16,7 @@ router.get("/", function (req, res) {
       img: g.background_image,
       rating: g.rating,
       genres: g.genres.map((g) => g.name),
+      released: g.released,
     }));
     finalSend = [...finalSend, ...forSend];
     if (actCalls === apiCalls) {
